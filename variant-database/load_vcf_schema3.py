@@ -11,11 +11,35 @@ import pyarrow as pa
 from pyiceberg.exceptions import NoSuchTableError
 from utils import load_s3_tables_catalog, retry_operation
 import gzip
+import boto3
+from io import TextIOWrapper
 
 # Configuration
 NAMESPACE = "variant_db_3"
 TABLE_NAME = "genomic_variants"
 BATCH_SIZE = 100000  # Number of records to process before writing to the table
+
+
+def parse_s3_uri(s3_uri):
+    """Parse S3 URI and return bucket and key.
+    
+    Args:
+        s3_uri (str): S3 URI in format s3://bucket/key
+        
+    Returns:
+        tuple: (bucket, key)
+        
+    Raises:
+        ValueError: If URI is invalid or missing parts
+    """
+    if not s3_uri.startswith('s3://'):
+        raise ValueError(f"Invalid S3 URI format: {s3_uri}. URIs must begin with s3://")
+    
+    s3_parts = s3_uri[5:].split('/', 1)
+    if len(s3_parts) != 2 or not s3_parts[0] or not s3_parts[1]:
+        raise ValueError(f"Invalid S3 URI - missing bucket or key: {s3_uri}")
+    
+    return s3_parts[0], s3_parts[1]
 
 
 def get_table():
@@ -46,11 +70,28 @@ def get_table():
 
 
 def open_vcf_file(file_path):
-    """Open a VCF file, handling gzipped files automatically."""
-    if file_path.endswith('.gz'):
-        return gzip.open(file_path, 'rt')
+    """Open a VCF file, handling both local files and S3 URIs, with gzip support."""
+    if file_path.startswith('s3://'):
+        # Parse S3 URI
+        bucket, key = parse_s3_uri(file_path)
+        
+        # Create S3 client
+        s3_client = boto3.client('s3')
+        
+        # Get the object
+        response = s3_client.get_object(Bucket=bucket, Key=key)
+        
+        # Handle gzipped files
+        if file_path.endswith('.gz'):
+            return TextIOWrapper(gzip.GzipFile(fileobj=response['Body']))
+        else:
+            return TextIOWrapper(response['Body'])
     else:
-        return open(file_path, 'r')
+        # Local file handling (original logic)
+        if file_path.endswith('.gz'):
+            return gzip.open(file_path, 'rt')
+        else:
+            return open(file_path, 'r')
 
 
 def parse_vcf_header(vcf_file):
@@ -378,8 +419,22 @@ def main():
 
     # Process each VCF file
     for vcf_file in args.vcf_files:
-        if not os.path.exists(vcf_file):
-            print(f"Error: File not found: {vcf_file}")
+        # Check file existence for both local and S3 files
+        file_exists = True
+        if vcf_file.startswith('s3://'):
+            try:
+                bucket, key = parse_s3_uri(vcf_file)
+                s3_client = boto3.client('s3')
+                s3_client.head_object(Bucket=bucket, Key=key)
+            except Exception as e:
+                file_exists = False
+                print(f"Error: S3 file not found: {vcf_file} - {e}")
+        else:
+            file_exists = os.path.exists(vcf_file)
+            if not file_exists:
+                print(f"Error: Local file not found: {vcf_file}")
+        
+        if not file_exists:
             continue
 
         try:
