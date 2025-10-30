@@ -234,11 +234,13 @@ The following is the result of a real interaction with Q CLI using the HealthOmi
  ⋮    "name": "ListAHORuns"
 
 Allow this action? Use 't' to trust (always allow) this tool for the session. [y/n/t]:
+```
 
 Q has determined that the best way to answer the question is to call the ListAHORuns tool where the run status is FAILED. You may agree to this by pressing y or reject it with n . If you reject a request Q will usually suggest something else or perhaps conclude that it cannot answer with the information available. If you want to trust the ListAHORuns tool for the remainder of the chat session you can press t. This will run the tool and will not prompt you again when invoking the same tool in this session.
 
 Q summarizes the information it gets from the MCP server and produces a response.
 
+```
 > Your most recent failed workflow run is:
 
 Run ID: 4525293
