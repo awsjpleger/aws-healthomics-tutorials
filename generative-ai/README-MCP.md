@@ -323,9 +323,9 @@ json
 
 
 Would you like me to help you set up these permissions, or do you need assistance with any other aspect of fixing this workflow?
+```
 
 Q has identified that the issue lies with incorrect ECR permissions for a container image used in my workflow and suggest what the ECR resource policy should be. It also suggest checking some other conditions like the workflow role which I have removed to save space. Suggestions are generally ordered by what Q determines is the most likely fix and it may also suggest other possible causes or things to check.
-```
 
 From here you can continue the chat. For example, you could ask it to “Fix my ECR resource policy and then re-run the workflow”. When the run succeeds you could ask it to “Analyze the last run and suggest where my resources might be over or under utilized”.
 
