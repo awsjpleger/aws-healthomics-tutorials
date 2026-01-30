@@ -164,7 +164,7 @@ For this tutorial we will deploy Kiro CLI (the MCP client) on an EC2 instance bu
     Use /help for more information and happy coding!
     
     Model: Auto (/model to change)
-```
+    ```
 
 7. Quit Kiro CLI (`/quit`) to add the HealthOmics MCP server":
     ```
