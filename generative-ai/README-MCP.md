@@ -131,7 +131,7 @@ For this tutorial we will deploy Kiro CLI (the MCP client) on an EC2 instance bu
     ❯ Use for Free with Builder ID
       Use for Free with Google or GitHub
       Use with Pro license
-  ```
+   ```
     
    Select your preferred login method. For the best experience a [Professional license](https://kiro.dev/pricing/) is recommended. However, you may use a free license according to the restrictions of that tier.
 
