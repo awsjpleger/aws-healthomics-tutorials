@@ -1,0 +1,26 @@
+{
+  "schema": {
+    "description": "Schema design to use (1, 2, 3, or 4)",
+    "optional": false
+  },
+  "destination": {
+    "description": "S3 Table Bucket ARN (arn:aws:s3tables:...) or S3 path (s3://...) for Glue catalog. This is a String, not a File.",
+    "optional": false
+  },
+  "container": {
+    "description": "ECR container image URI",
+    "optional": false
+  },
+  "namespace": {
+    "description": "Iceberg namespace. Auto-determined by schema if omitted.",
+    "optional": true
+  },
+  "batch_size": {
+    "description": "Number of VCF records per processing batch (default: 100000)",
+    "optional": true
+  },
+  "vcf_file": {
+    "description": "S3 URI to the input VCF file (.vcf or .vcf.gz)",
+    "optional": false
+  }
+}
