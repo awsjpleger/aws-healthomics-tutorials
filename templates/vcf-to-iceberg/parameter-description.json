@@ -11,7 +11,13 @@
   },
   "destination": {
     "description": "S3 Table Bucket ARN (arn:aws:s3tables:...) or S3 path (s3://...) for Glue catalog. This is a String, not a File.",
-    "optional": false
+    "optional": false,
+    "useCase": {
+      "normalized schema": "arn:aws:s3tables:<REGION>:<ACCOUNT>:bucket/<BUCKET-NAME>",
+      "variant centric schema": "arn:aws:s3tables:<REGION>:<ACCOUNT>:bucket/<BUCKET-NAME>",
+      "sample centric schema": "arn:aws:s3tables:<REGION>:<ACCOUNT>:bucket/<BUCKET-NAME>",
+      "genomic region centric schema": "arn:aws:s3tables:<REGION>:<ACCOUNT>:bucket/<BUCKET-NAME>"
+    }
   },
   "container": {
     "description": "ECR container image URI",
@@ -33,6 +39,12 @@
   },
   "vcf_file": {
     "description": "S3 URI to the input VCF or GVCF file (.vcf or .vcf.gz)",
-    "optional": false
+    "optional": false,
+    "useCase": {
+      "normalized schema": "s3://<BUCKET-NAME>/<PATH-TO-VCF-FILE>",
+      "variant centric schema": "s3://<BUCKET-NAME>/<PATH-TO-VCF-FILE>",
+      "sample centric schema": "s3://<BUCKET-NAME>/<PATH-TO-VCF-FILE>",
+      "genomic region centric schema": "s3://<BUCKET-NAME>/<PATH-TO-VCF-FILE>"
+    }
   }
 }
