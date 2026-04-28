@@ -1,3 +1,0 @@
-engine: WDL
-name: germline-fastqs-to-vcf
-main: main.wdl

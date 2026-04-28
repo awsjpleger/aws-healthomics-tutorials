@@ -1,3 +1,0 @@
-engine: NEXTFLOW
-name: nf-core-vep
-main: main.nf

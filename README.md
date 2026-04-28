@@ -8,24 +8,12 @@ Example code that demonstrates how to store, process, and query genomic and biol
 
 [AWS HealthOmics](https://aws.amazon.com/omics/) helps healthcare and life sciences customers store, query, analyze, and generate insights from genomic and other biological data to improve human health.
 
-This repository contains resources (e.g. code scripts, jupyter notebooks, etc) that demonstrate the usage of AWS HealthOmics.
-
-## Setup
-
-The quickest setup to run example notebooks includes:
-- An [AWS account](http://docs.aws.amazon.com/omics/latest/dev/setting-up.html#setting-up-aws-sign-up)
-- Proper [IAM User and Role](http://docs.aws.amazon.com/omics/latest/dev/setting-up.html#setting-up-create-iam-user) setup
-- An [Amazon SageMaker Notebook Instance](http://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html)
-
+This repository contains resources (e.g. code scripts, example workflows, etc) that demonstrate the usage of AWS HealthOmics.
 
 ## Tutorials
 ### Generative AI
 * [Rapidly generate and run and analyze](./generative-ai/README.md) workflows using natural langauge prompts and [Kiro CLI](https://kiro.dev/cli/).
 * [Using Agentic AI and MCP](./generative-ai/README-MCP.md) for natural language interactions with AWS HealthOmics.
-### Storage
-* [Using HealthOmics Storage with genomics references and readsets](./notebooks/200-omics_storage.ipynb): Get acquainted with HealthOmics storage by creating reference and sequence stores, importing data from FASTQ and CRAM files, and downloading readsets.
-### Workflows
-* [Running WDL and Nextflow pipelines with HealthOmics Workflows](./notebooks/200-omics_workflows.ipynb): Learn how to create, run, and debug WDL and Nextflow based pipelines that process data from HealthOmics Storage and Amazon S3 using HealthOmics Workflows.
 ### Analytics
 * [Create S3Table bucket tables and import VCF and GVCF files](./variant-database/): Setup S3Table bucket tables to hold variant data and import variant data into a iceberg data warehouse suitable for integration with AWS analytics tools such as Athena, Redshift, EMR and others.
 

@@ -1,3 +1,0 @@
-engine: WDL
-name: somatic-snps-and-indels
-main: mutec2.wdl

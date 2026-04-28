@@ -1,0 +1,8 @@
+{
+  "registryMappings": [
+    {
+      "upstreamRegistryUrl": "quay.io",
+      "ecrRepositoryPrefix": "quay"
+    }
+  ]
+}

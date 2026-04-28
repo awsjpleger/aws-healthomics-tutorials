@@ -1,3 +1,0 @@
-engine: CWL
-name: fastqs-to-analysis-ready-bam
-main: main.cwl

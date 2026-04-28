@@ -1,7 +1,0 @@
-{
-    "container_builder": {
-        "source_uris": [
-            "{{staging_uri}}"
-        ]
-    }
-}

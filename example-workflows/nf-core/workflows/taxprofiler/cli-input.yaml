@@ -1,3 +1,0 @@
-engine: NEXTFLOW
-name: nf-core-taxprofiler
-main: main.nf

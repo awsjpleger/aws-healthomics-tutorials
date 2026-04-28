@@ -1,0 +1,15 @@
+{
+  "samples": ["SRR2089363", "SRR2089364"],
+  "fastq_files": [
+    "s3://aws-genomics-static-us-east-1/omics-data/tumor-normal/fastqs/SRR2089363_R1.fastq",
+    "s3://aws-genomics-static-us-east-1/omics-data/tumor-normal/fastqs/SRR2089364_R1.fastq"
+  ],
+  "genome_fasta": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta",
+  "genome_fasta_index": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.fai",
+  "run_bwa_index": false,
+  "bwa_index_amb": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.amb",
+  "bwa_index_ann": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.ann",
+  "bwa_index_bwt": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.bwt",
+  "bwa_index_pac": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.pac",
+  "bwa_index_sa": "s3://aws-genomics-static-us-east-1/omics-data/test-datasets/nf-core-sarek/reference/chr20_hg38/Homo_sapiens_assembly38_chr20.fasta.sa"
+}
